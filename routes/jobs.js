@@ -7,18 +7,20 @@ const queue = new PriorityQueue();
 const router = express.Router();
 
 insertJob = (req, res, next) => {
-    const jobid = req.params.jobid;
-    const severity = req.params.severity
+    const jobid = parseInt(req.params.jobid);
+    const severity = parseInt(req.params.severity);
     queue.enqueue(jobid, severity);
 
     queue.printPQueue();
+    next();
 }
 
 deleteJob = (req, res, next) => {
-    const jobid = req.params.jobid;
-    queue.deleteByItem(jobid);
+    const jobid = parseInt(req.params.jobid);
+    queue.deleteById(jobid);
 
     queue.printPQueue();
+    next();
 }
 
 // insert a job

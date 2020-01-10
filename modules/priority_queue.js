@@ -5,9 +5,9 @@
 
 
 class QElement { 
-    constructor(item, severity) 
+    constructor(id, severity) 
     { 
-        this.item = item; 
+        this.id = id; 
         this.severity = severity; 
     } 
 } 
@@ -18,12 +18,12 @@ class PriorityQueue {
         this.items = []; 
     } 
 
-    enqueue(item, severity) {
+    enqueue(id, severity) {
+        let qElement = new QElement(id, severity); 
+        let contain = false;
 
-        var qElement = new QElement(item, severity); 
-        var contain = false; 
-
-        for (var i = 0; i < this.items.length; i++) { 
+        for (let i = 0; i < this.items.length; i++) { 
+            
             if (this.items[i].severity < qElement.severity) { 
                 // Once the correct location is found it is 
                 // enqueued 
@@ -45,10 +45,10 @@ class PriorityQueue {
         return this.items.shift(); 
     }
 
-    deleteByItem(item) {
-        for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i] == item) {
-                this.items.splice(i,0);
+    deleteById(id) {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].id == id) {
+                this.items.splice(i,1);
             }
         }
     }
@@ -59,8 +59,8 @@ class PriorityQueue {
 
     printPQueue()  { 
         var str = ""; 
-        for (var i = 0; i < this.items.length; i++) 
-            str += this.items[i].item + " "; 
+        for (let i = 0; i < this.items.length; i++) 
+            str += this.items[i].id + " ";
         console.log(str); 
     } 
 }
