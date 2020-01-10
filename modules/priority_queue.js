@@ -2,6 +2,8 @@
    Priority is defined by number 'severity'. higher severity has higher priority.
 */
 
+
+
 class QElement { 
     constructor(item, severity) 
     { 
@@ -9,6 +11,7 @@ class QElement {
         this.severity = severity; 
     } 
 } 
+
 class PriorityQueue {
     constructor() 
     { 
@@ -42,6 +45,18 @@ class PriorityQueue {
         return this.items.shift(); 
     }
 
+    deleteByItem(item) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i] == item) {
+                this.items.splice(i,0);
+            }
+        }
+    }
+
+    peek() {
+        return this.items[0];
+    }
+
     printPQueue()  { 
         var str = ""; 
         for (var i = 0; i < this.items.length; i++) 
@@ -49,3 +64,6 @@ class PriorityQueue {
         console.log(str); 
     } 
 }
+
+exports.modules = { PriorityQueue }
+
