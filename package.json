@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "js-priority-queue": "^0.1.5",
     "node-priority-queue": "^1.0.0"
   }
